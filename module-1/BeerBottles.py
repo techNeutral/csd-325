@@ -1,20 +1,11 @@
+#Brett Fuller
+#CSD325 Assignment 1.3 - bottles of beer
+#10/25/2024
+
 #The function should take the input and count backwards to 1 while displaying the number of remaining bottles of beer on the wall.
 #Once the count is down to 1, change lyrics to show "1 bottle of beer..."
 def countDown(bottles):
     while(bottles > 0):
-        #if bottles > 1:
-            #bottleString =
-            #print(f"{bottles} bottles of beer on the wall, {bottles} bottles of beer.\n")
-            #bottles -= 1
-            #if bottles > 1:
-                #print(f"Take one down and pass it around, {bottles} bottles of beer on the wall\n\n")
-            #else:
-                #print(f"Take one down and pass it around, {bottles} bottle of beer on the wall\n\n")
-        #else:
-            #print(f"{bottles} bottle of beer on the wall, {bottles} bottle of beer.\n")
-            #bottles -= 1
-            #print(f"Take one down and pass it around, {bottles} bottles of beer on the wall\n\n")
-
         if bottles > 2:
             bottleString = "bottles"
             tempBottleString = "bottles"
