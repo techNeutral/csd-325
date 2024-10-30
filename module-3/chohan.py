@@ -1,3 +1,7 @@
+#Brett Fuller
+#CSD325 Assignment 3.2 - Chohan
+#10/30/2024
+
 """Cho-Han, by Al Sweigart al@inventwithpython.com
 The traditional Japanese dice game of even-odd.
 View this code athttps://nostarch.com/big-book-small-python-projects
@@ -8,11 +12,13 @@ import random, sys
 JAPANESE_NUMBERS = {1: 'ICHI', 2: 'NI', 3: 'SAN',
                     4: 'SHI', 5: 'GO', 6: 'ROKU'}
 
+#BF - Added a line to notify the user of the 10 mon bonus
 print('''Cho-Han, by Al Sweigart al@inventwithpython.com
 
 In this traditional Japanese dice game, two dice are rolled in a bamboo
 cup by the dealer sitting on the floor. The player must guess if the
-dice total to an even (cho) or odd (han) number.
+dice total to an even (cho) or odd (han) number. If the dice total a 
+2 or a 7 on a dice roll, the player gets a 10 mon bonus.
 ''')
 
 purse = 5000
@@ -20,7 +26,8 @@ while True:  # Main game loop.
     # Place your bet:
     print('You have', purse, 'mon. How much do you bet? (or QUIT)')
     while True:
-        pot = input('> ')
+        #BF - Changed input prompt to my initials
+        pot = input('bmf: ')
         if pot.upper() == 'QUIT':
             print('Thanks for playing!')
             sys.exit()
@@ -45,7 +52,8 @@ while True:  # Main game loop.
 
     # Let the player bet cho or han:
     while True:
-        bet = input('> ').upper()
+        #BF - Changed input prompt to my initials
+        bet = input('bmf: ').upper()
         if bet != 'CHO' and bet != 'HAN':
             print('Please enter either "CHO" or "HAN".')
             continue
@@ -56,6 +64,14 @@ while True:  # Main game loop.
     print('The dealer lifts the cup to reveal:')
     print('  ', JAPANESE_NUMBERS[dice1], '-', JAPANESE_NUMBERS[dice2])
     print('    ', dice1, '-', dice2)
+    
+    #BF - Created a variable for diceTotal so I did not have to do the math repeatedly
+    diceTotal = dice1 + dice2
+    #BF - check to see if diceTotal is equal to 2 or 7 and add a 10 mon bonus
+    #   to their purse and let the player know
+    if diceTotal == 2 or diceTotal == 7:
+        print(f"You rolled a {diceTotal} so you get a 10 mon bonus")
+        purse += 10
 
     # Determine if the player won:
     rollIsEven = (dice1 + dice2) % 2 == 0
@@ -70,8 +86,8 @@ while True:  # Main game loop.
     if playerWon:
         print('You won! You take', pot, 'mon.')
         purse = purse + pot  # Add the pot from player's purse.
-        print('The house collects a', pot // 10, 'mon fee.')
-        purse = purse - (pot // 10)  # The house fee is 10%.
+        print('The house collects a', pot // 12, 'mon fee.') #BF - displayed updated house winnings
+        purse = purse - (pot // 12)  #BF - Updated The house fee is now 12% up from 10%.
     else:
         purse = purse - pot  # Subtract the pot from player's purse.
         print('You lost!')
